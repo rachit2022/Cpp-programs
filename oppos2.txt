@@ -1,0 +1,160 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+int i,j,n;
+struct Employee
+{
+    char name[50];
+    int empid;
+    int grade;
+    int basic;
+    int Gross_salary;
+    int tax;
+    int Net_salary;
+    int da;
+    int hra;
+    void EmployeeID();
+    void Highest_tax();
+    void Lowest_tax();
+}E[100],temp;
+void EmployeeID()
+{
+    for(i=0;i<n;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(E[i].empid>E[j].empid)
+            {
+                temp=E[i];
+                E[i]=E[j];
+                E[j]=temp;
+            }
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        cout<<"The name of the employee is: "<<E[n].name<<endl;
+        cout<<"The Employee ID of the employee is: "<<E[n].empid<<endl;
+        cout<<"The da of the employee is: "<<E[n].da<<endl;
+        cout<<"The hra of the employee is: "<<E[n].hra<<endl;
+        cout<<"The Net salary of the employee is: "<<E[n].Net_salary<<endl;
+    }
+}
+void Highest_tax()
+{
+    for(i=0;i<n;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(E[i].Net_salary>E[j].Net_salary)
+            {
+                temp=E[i];
+                E[i]=E[j];
+                E[j]=temp;
+            }
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        cout<<"The name of the employee is: "<<E[n].name<<endl;
+        cout<<"The Employee ID of the employee is: "<<E[n].empid<<endl;
+        cout<<"The da of the employee is: "<<E[n].da<<endl;
+        cout<<"The hra of the employee is: "<<E[n].hra<<endl;
+        cout<<"The Net salary of the employee is: "<<E[n].Net_salary<<endl;
+    }
+}
+void Lowest_tax()
+{
+    for(i=0;i<n;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(E[i].Net_salary<E[j].Net_salary)
+            {
+                temp=E[i];
+                E[i]=E[j];
+                E[j]=temp;
+            }
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        cout<<"The name of the employee is: "<<E[n].name<<endl;
+        cout<<"The Employee ID of the employee is: "<<E[n].empid<<endl;
+        cout<<"The da of the employee is: "<<E[n].da<<endl;
+        cout<<"The hra of the employee is: "<<E[n].hra<<endl;
+        cout<<"The Net salary of the employee is: "<<E[n].Net_salary<<endl;
+    }
+}
+int main()
+{
+    int choice;
+    cout<<"Enter the number of employee: ";
+    cin>>n;
+    for(i=0;i<n;i++)
+    {
+        cout<<"The name of employee "<<i+1<<" is: ";
+        cin>>E[n].name;
+        cout<<"Employee ID of employee is: ";
+        cin>>E[n].empid;
+        cout<<"da of employee is: ";
+        cin>>E[n].da;
+        cout<<"hra of employee is: ";
+        cin>>E[n].hra;
+        cout<<"Grade of employee is: ";
+        cin>>E[n].grade;
+        if(E[n].grade==1)
+        {
+            E[n].basic=30000;
+        }
+        else if(E[n].grade==2)
+        {
+           E[n].basic=25000;
+        } 
+        else if(E[n].grade==3)
+        {
+           E[n].basic=20000;
+        }
+        else
+        {
+           E[n].basic=15000;
+        }
+        E[n].Gross_salary=E[n].basic+E[n].da+E[n].hra;
+        cout<<"The gross salary of the employee is: "<<E[n].Gross_salary<<endl;
+        if(E[n].Gross_salary<=40000)
+        {
+            E[n].tax=E[n].Gross_salary*(0);
+        }
+        else if(E[n].Gross_salary>40000 && E[n].Gross_salary<=75000)
+        {
+            E[n].tax=E[n].Gross_salary*(0.001);
+        }
+        else
+        {
+            E[n].tax=E[n].Gross_salary*(0.015);
+        }
+        cout<<"The tax of the employee is: "<<E[n].tax<<endl;
+        E[n].Net_salary=E[n].Gross_salary-E[n].tax;
+        cout<<"The net salary of the employee is: "<<E[n].Net_salary<<endl;
+    }
+    cout<<"Enter the choice of your sorting: ";
+    cin>>choice;
+    switch(choice)
+        {
+            case 1:
+            cout<<"Sorting in terms of Employee ID"<<endl;
+            EmployeeID();
+            break;
+            case 2:
+            cout<<"Sorting in terms of Highest tax"<<endl;
+            Highest_tax();
+            break;
+            case 3:
+            cout<<"Sorting in terms of Lowest tax"<<endl;
+            Lowest_tax();
+            break;
+            default:
+            break;
+        }
+    return 0;
+}

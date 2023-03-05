@@ -1,0 +1,5 @@
+ 1 juice 70 2
+ 2 bread 30 2
+ 3 butter 60 3
+ 4 eggs 170 4
+ 101 apple 100 2

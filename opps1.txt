@@ -1,0 +1,124 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+int n,i,j;
+struct student 
+{
+    char name[50];
+    int roll_num;
+    int m1,m2,m3,m4,m5;
+    int average;
+    int total;
+    void roll_number();
+    void average_sort();
+    void total_sort();
+}s[100],temp;
+void roll_number(void)
+{
+    {
+        for(i=0;i<n;i++)
+        {
+            for(j=i+1;j<n;j++)
+            {
+                if(s[i].roll_num>s[j].roll_num)
+                {
+                    temp=s[i];
+                    s[i]=s[j];
+                    s[j]=temp;
+                }
+            }
+        }
+        for(i=0;i<n;i++)
+        {
+            cout<<"Name is: "<<s[i].name<<endl;
+            cout<<"Roll Number is: "<<s[i].roll_num<<endl;
+            cout<<"Total is: "<<s[i].total<<endl;
+            cout<<"Average is: "<<s[i].average<<endl;
+        }
+    }
+}
+void total_sort(void)
+{
+    {
+        for(i=0;i<n;i++)
+        {
+            for(j=i+1;j<n;j++)
+            {
+                if(s[i].total>s[j].total)
+                {
+                    temp=s[i];
+                    s[i]=s[j];
+                    s[j]=temp;
+                }
+            }
+        }
+        for(i=0;i<n;i++)
+        {
+            cout<<"Name is: "<<s[i].name<<endl;
+            cout<<"Roll Number is: "<<s[i].roll_num<<endl;
+            cout<<"Total is: "<<s[i].total<<endl;
+            cout<<"Average is: "<<s[i].average<<endl;
+        }
+    }
+}
+void average_sort(void)
+{
+    {
+        for(i=0;i<n;i++)
+        {
+            for(j=i+1;j<n;j++)
+            {
+                if(s[i].average>s[j].average)
+                {
+                    temp=s[i];
+                    s[i]=s[j];
+                    s[j]=temp;
+                }
+            }
+        }
+        for(i=0;i<n;i++)
+        {
+            cout<<"Name is: "<<s[i].name<<endl;
+            cout<<"Roll Number is: "<<s[i].roll_num<<endl;
+            cout<<"Total is: "<<s[i].total<<endl;
+            cout<<"Average is: "<<s[i].average<<endl;
+        }
+    }
+}
+int main()
+{
+    int choice;
+    cout<<"Enter the number of student: ";
+    cin>>n;
+    for(i=0;i<n;i++)
+    {
+        cout<<"Enter the name of student: "<<i+1<<endl;
+        cin>>s[i].name;
+        cout<<"Enter the roll number of student: "<<endl;
+        cin>>s[i].roll_num;
+        cout<<"Enter the marks of the student: "<<endl;
+        cin>>s[i].m1>>s[i].m2>>s[i].m3>>s[i].m4>>s[i].m5;
+        s[i].total=s[i].m1+s[i].m2+s[i].m3+s[i].m4+s[i].m5;
+        cout<<"Total of student "<<i+1<<" is: "<<s[i].total<<endl;
+        s[i].average=s[i].total/5;
+        cout<<"Average of student "<<i+1<<" is: "<<s[i].average<<endl;
+    }
+    cout<<"Enter your choice of sorting: ";
+    cin>>choice;
+    switch(choice)
+    {
+        case 1:
+        average_sort();
+        break;
+        case 2:
+        total_sort();
+        break;
+        case 3:
+        roll_number();
+        break;
+        default:
+        break;
+    }
+    
+    return 0;
+}
